@@ -21,50 +21,28 @@
       (function () {
         var devScript = document.querySelector('script[src*="src/main.tsx"]');
         if (!devScript) return;
-        var checked = false;
-        function checkStaticFallback() {
-          if (checked || window.__BOTANICA_MOUNTED__) return;
+        var loaded = false;
+        function loadStaticInvitation() {
+          if (loaded || window.__BOTANICA_MOUNTED__) return;
           var root = document.getElementById('root');
           if (root && root.childElementCount > 0) return;
-          checked = true;
+          loaded = true;
           fetch('./src/main.tsx')
             .then(function (res) {
               var ct = (res.headers.get('content-type') || '').toLowerCase();
-              if (ct.indexOf('javascript') !== -1) {
-                return;
-              }
-              var base = window.location.pathname.replace(/index\.html$/, '');
-              if (!base.endsWith('/')) base += '/';
-              var candidates = ['public/undangan/', 'docs/'];
-              function tryNext(idx) {
-                if (idx >= candidates.length) {
-                  if (root) {
-                    root.innerHTML =
-                      '<div style="font-family:sans-serif;max-width:480px;margin:48px auto;padding:24px;text-align:center;color:#332924"><h2>Undangan Perlu Di-build</h2><p>Pastikan folder <b>public/undangan</b> atau <b>docs</b> ikut terunggah ke repository GitHub Anda.</p></div>';
-                  }
-                  return;
-                }
-                var sub = candidates[idx];
-                fetch(base + sub + 'index.html', { method: 'HEAD' })
-                  .then(function (r) {
-                    if (r.ok) {
-                      window.location.replace(
-                        base + sub + window.location.search + window.location.hash
-                      );
-                    } else {
-                      tryNext(idx + 1);
-                    }
-                  })
-                  .catch(function () {
-                    tryNext(idx + 1);
-                  });
-              }
-              tryNext(0);
+              if (ct.indexOf('javascript') !== -1) return;
+              var s = document.createElement('script');
+              s.src = './public/gh-invitation.js';
+              document.body.appendChild(s);
             })
-            .catch(function () {});
+            .catch(function () {
+              var s = document.createElement('script');
+              s.src = './public/gh-invitation.js';
+              document.body.appendChild(s);
+            });
         }
-        devScript.addEventListener('error', checkStaticFallback);
-        window.setTimeout(checkStaticFallback, 400);
+        devScript.addEventListener('error', loadStaticInvitation);
+        window.setTimeout(loadStaticInvitation, 350);
       })();
     </script>
     <!-- GH_ROOT_FALLBACK_END -->
