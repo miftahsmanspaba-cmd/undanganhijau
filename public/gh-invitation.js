@@ -206,11 +206,13 @@
     '.vb-font-display{font-family:"Cormorant Garamond",Georgia,serif}' +
     '.vb-backdrop{min-height:100vh;background-color:#cfc4b8;background-image:radial-gradient(circle at 50% 25%,rgba(246,239,231,.55),rgba(190,174,160,.65)),url("./src/assets/images/botanical_backdrop_garden_1795659465193.jpg");background-size:cover,640px auto;background-repeat:no-repeat,repeat;background-position:center top,center top}' +
     '.vb-sheet{max-width:680px;margin:0 auto;min-height:100vh;position:relative;border-left:1px solid rgba(140,112,96,.25);border-right:1px solid rgba(140,112,96,.25);padding-bottom:6rem;background-color:#f7f2eb;background-image:radial-gradient(ellipse at 50% 0%,rgba(255,252,247,.85),rgba(243,235,225,.65)),url("./src/assets/images/botanical_cream_parchment_1795659478917.jpg");background-size:auto,100% auto;background-repeat:no-repeat,repeat-y;box-shadow:0 24px 70px rgba(51,41,36,.22)}' +
-    '.vb-cover{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:12px;transition:transform 620ms cubic-bezier(.22,1,.36,1),opacity 480ms ease;will-change:transform,opacity}' +
+    '.vb-cover{position:fixed;inset:0;height:100vh;height:100dvh;z-index:50;display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:10px;transition:transform 620ms cubic-bezier(.22,1,.36,1),opacity 480ms ease;will-change:transform,opacity}' +
+    '@media(min-width:640px){.vb-cover{align-items:center;padding:24px}}' +
     '.vb-cover.is-opened{transform:translate3d(0,-100%,0);opacity:0;pointer-events:none}' +
-    '.vb-cover-card{position:relative;width:100%;max-width:540px;height:100%;max-height:860px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden;border-radius:18px;border:1px solid rgba(140,112,96,.45);padding:2rem 1.5rem;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(255,253,250,.92) 0%,rgba(242,235,226,.88) 65%,rgba(226,215,203,.92) 100%);box-shadow:0 24px 60px rgba(51,41,36,.24)}' +
+    '.vb-cover-card{position:relative;width:100%;max-width:540px;min-height:100%;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;gap:10px;overflow:hidden;border-radius:18px;border:1px solid rgba(140,112,96,.45);padding:1.15rem 1.15rem;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(255,253,250,.92) 0%,rgba(242,235,226,.88) 65%,rgba(226,215,203,.92) 100%);box-shadow:0 24px 60px rgba(51,41,36,.24)}' +
+    '@media(min-width:640px){.vb-cover-card{height:100%;max-height:860px;justify-content:space-between;gap:16px;padding:2.5rem 1.5rem}}' +
     '.vb-glass{position:absolute;inset:0;pointer-events:none;overflow:hidden}' +
-    '.vb-corner{position:absolute;width:145px;height:145px;pointer-events:none;user-select:none;z-index:2}' +
+    '.vb-corner{position:absolute;width:110px;height:110px;pointer-events:none;user-select:none;z-index:2}' +
     '@media(min-width:640px){.vb-corner{width:176px;height:176px}}' +
     '.vb-corner-img{width:100%;height:100%;object-fit:contain;filter:sepia(.22) saturate(.95)}' +
     '.vb-corner--top-left{top:0;left:0;transform-origin:top left;animation:vbSwayA 4.8s ease-in-out infinite}.vb-corner--top-left img{transform:scaleX(-1)}' +
@@ -222,12 +224,14 @@
     '@keyframes vbSwayB{0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}50%{transform:translate3d(-3px,-4px,0) rotate(-2.6deg) scale(1.03)}}' +
     '@keyframes vbFloat{0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}50%{transform:translate3d(0,-5px,0) rotate(1.1deg) scale(1.025)}}' +
     '.vb-float{animation:vbFloat 5.2s ease-in-out infinite;filter:sepia(.22) saturate(.95)}' +
-    '.vb-oval-wrap{position:relative;z-index:10;width:176px;margin-top:6px}@media(min-width:640px){.vb-oval-wrap{width:206px}}' +
-    '.vb-oval{border-radius:9999px;border:2px solid rgba(140,112,96,.7);background:#fffcf8;padding:6px;box-shadow:0 10px 25px rgba(51,41,36,.15)}' +
+    '.vb-oval-wrap{position:relative;z-index:10;width:clamp(118px,22dvh,172px);margin-top:4px}@media(min-width:640px){.vb-oval-wrap{width:206px;margin-top:8px}}' +
+    '.vb-oval{border-radius:9999px;border:2px solid rgba(140,112,96,.7);background:#fffcf8;padding:5px;box-shadow:0 10px 25px rgba(51,41,36,.15)}' +
     '.vb-oval-inner{aspect-ratio:3/4;overflow:hidden;border-radius:9999px;background:#ebe3d8}' +
     '.vb-oval-inner img,.vb-arch-inner img,.vb-quote-photo img,.vb-tile img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}' +
-    '.vb-guest-box{border-radius:14px;border:1px solid rgba(140,112,96,.35);background:rgba(255,252,248,.92);padding:14px 18px;box-shadow:0 2px 8px rgba(51,41,36,.06)}' +
-    '.vb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:9999px;background:#a68674;color:#fff;padding:12px 28px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;box-shadow:0 6px 16px rgba(51,41,36,.16)}' +
+    '.vb-guest-box{border-radius:14px;border:1px solid rgba(140,112,96,.35);background:rgba(255,252,248,.92);padding:10px 14px;box-shadow:0 2px 8px rgba(51,41,36,.06)}' +
+    '@media(min-width:640px){.vb-guest-box{padding:14px 18px}}' +
+    '.vb-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:9999px;background:#a68674;color:#fff;padding:11px 24px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px rgba(51,41,36,.16)}' +
+    '@media(min-width:640px){.vb-btn{padding:12px 28px;font-size:13px}}' +
     '.vb-btn:hover{background:#8c7060}' +
     '.vb-btn-rect{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:10px;background:#8c7060;color:#fff;padding:10px 18px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none}' +
     '.vb-btn-rect:hover{background:#71584a}' +
@@ -337,17 +341,17 @@
         '<div class="vb-oval-wrap"><div class="vb-oval"><div class="vb-oval-inner">' +
           '<img src="' + esc(DATA.photos[0].src) + '" alt="' + esc(DATA.coupleShort) + '" />' +
         '</div></div></div>' +
-        '<div style="position:relative;z-index:10;margin:8px 0;">' +
-          '<p style="margin:0;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:#4a3b34;">The Wedding Of</p>' +
-          '<h1 class="vb-font-display" style="margin:6px 0 0;font-size:clamp(2rem,8.5vw,3rem);font-style:italic;font-weight:500;color:#8c7060;white-space:nowrap;">' + esc(DATA.coupleShort) + '</h1>' +
-          '<p style="margin:4px 0 0;font-size:12px;letter-spacing:.2em;color:#5f5149;">' + esc(DATA.dateDots) + '</p>' +
+        '<div style="position:relative;z-index:10;margin:2px 0;">' +
+          '<p style="margin:0;font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#4a3b34;">The Wedding Of</p>' +
+          '<h1 class="vb-font-display" style="margin:4px 0 0;font-size:clamp(1.85rem,8vw,3rem);font-style:italic;font-weight:500;color:#8c7060;white-space:nowrap;">' + esc(DATA.coupleShort) + '</h1>' +
+          '<p style="margin:2px 0 0;font-size:11px;letter-spacing:.2em;color:#5f5149;">' + esc(DATA.dateDots) + '</p>' +
         '</div>' +
         '<div style="position:relative;z-index:10;width:100%;max-width:320px;">' +
           '<div class="vb-guest-box">' +
-            '<p style="margin:0;font-size:11px;color:#5f5149;font-weight:500;">Kepada Yth. Bapak/Ibu/Saudara/i</p>' +
-            '<p class="vb-font-display" style="margin:4px 0 0;font-size:1.5rem;font-weight:600;color:#332924;">' + esc(displayGuest) + '</p>' +
+            '<p style="margin:0;font-size:10px;color:#5f5149;font-weight:500;">Kepada Yth. Bapak/Ibu/Saudara/i</p>' +
+            '<p class="vb-font-display" style="margin:3px 0 0;font-size:clamp(1.2rem,5vw,1.5rem);line-height:1.25;font-weight:600;color:#332924;">' + esc(displayGuest) + '</p>' +
           '</div>' +
-          '<button id="vb-open-btn" type="button" class="vb-btn" style="margin-top:14px;">Buka Undangan</button>' +
+          '<button id="vb-open-btn" type="button" class="vb-btn" style="margin-top:10px;">Buka Undangan</button>' +
         '</div>' +
       '</div>' +
     '</div>' +

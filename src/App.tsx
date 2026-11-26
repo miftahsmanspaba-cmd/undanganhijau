@@ -176,11 +176,11 @@ export default function App() {
       {!coverDismissed && (
         <div
           aria-hidden={isOpened}
-          className={`cover-curtain botanica-backdrop fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 ${
+          className={`cover-curtain botanica-backdrop fixed inset-0 z-50 flex h-[100dvh] items-start justify-center overflow-y-auto p-2.5 sm:items-center sm:p-6 ${
             isOpened ? 'cover-curtain--opened' : ''
           }`}
         >
-          <div className="botanica-cover-card relative flex h-full max-h-[860px] w-full max-w-[540px] flex-col items-center justify-between overflow-hidden rounded-2xl border border-[#8c7060]/45 px-6 py-8 sm:py-10 text-center shadow-2xl">
+          <div className="botanica-cover-card relative my-auto flex min-h-full w-full max-w-[540px] flex-col items-center justify-evenly gap-2.5 overflow-hidden rounded-2xl border border-[#8c7060]/45 px-5 py-5 text-center shadow-2xl sm:h-full sm:max-h-[860px] sm:justify-between sm:gap-4 sm:px-6 sm:py-10">
             <GlasshouseConservatoryBackdrop
               tone="sepia"
               className="absolute inset-0 opacity-85"
@@ -190,13 +190,13 @@ export default function App() {
               aria-hidden="true"
             />
 
-            <FloralCornerBouquet corner="top-left" className="absolute top-0 left-0 w-36 h-36 sm:w-44 sm:h-44" />
-            <FloralCornerBouquet corner="top-right" className="absolute top-0 right-0 w-36 h-36 sm:w-44 sm:h-44" />
-            <FloralCornerBouquet corner="bottom-left" className="absolute bottom-0 left-0 w-36 h-36 sm:w-44 sm:h-44 opacity-95" />
-            <FloralCornerBouquet corner="bottom-right" className="absolute bottom-0 right-0 w-36 h-36 sm:w-44 sm:h-44 opacity-95" />
+            <FloralCornerBouquet corner="top-left" className="absolute top-0 left-0 w-28 h-28 sm:w-44 sm:h-44" />
+            <FloralCornerBouquet corner="top-right" className="absolute top-0 right-0 w-28 h-28 sm:w-44 sm:h-44" />
+            <FloralCornerBouquet corner="bottom-left" className="absolute bottom-0 left-0 w-28 h-28 sm:w-44 sm:h-44 opacity-95" />
+            <FloralCornerBouquet corner="bottom-right" className="absolute bottom-0 right-0 w-28 h-28 sm:w-44 sm:h-44 opacity-95" />
 
             {/* Oval Portrait Frame matching Screenshot 1 */}
-            <div className="relative z-10 mt-2 w-44 sm:w-52">
+            <div className="relative z-10 mt-1 w-[clamp(118px,22dvh,172px)] sm:mt-2 sm:w-52">
               <div className="rounded-full border-2 border-[#8c7060]/70 bg-[#fffcf8] p-1.5 shadow-lg">
                 <div className="aspect-[3/4] overflow-hidden rounded-full bg-[#ebe3d8]">
                   {brokenPortraits.hero ? (
@@ -216,24 +216,24 @@ export default function App() {
               </div>
             </div>
 
-            <div className="relative z-10 my-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#4a3b34]">
+            <div className="relative z-10 my-0.5 sm:my-2">
+              <p className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.26em] text-[#4a3b34]">
                 The Wedding Of
               </p>
-              <h1 className="font-display mt-1.5 text-[clamp(2rem,8.5vw,3rem)] leading-tight italic font-medium text-[#8c7060] whitespace-nowrap">
+              <h1 className="font-display mt-1 text-[clamp(1.85rem,8vw,3rem)] leading-tight italic font-medium text-[#8c7060] whitespace-nowrap">
                 {config.coupleShort}
               </h1>
-              <p className="mt-1 text-xs tracking-[0.2em] text-[#5f5149] uppercase">
+              <p className="mt-0.5 text-[11px] sm:text-xs tracking-[0.2em] text-[#5f5149] uppercase">
                 22 . 12 . 2026
               </p>
             </div>
 
-            <div className="relative z-10 w-full max-w-xs space-y-4 mb-1">
-              <div className="rounded-xl border border-[#8c7060]/35 bg-[#fffcf8]/92 px-5 py-3.5 shadow-xs">
-                <p className="text-[11px] tracking-[0.12em] text-[#5f5149] font-medium">
+            <div className="relative z-10 w-full max-w-xs space-y-2.5 sm:space-y-4 mb-0.5 sm:mb-1">
+              <div className="rounded-xl border border-[#8c7060]/35 bg-[#fffcf8]/92 px-4 py-2.5 sm:px-5 sm:py-3.5 shadow-xs">
+                <p className="text-[10px] sm:text-[11px] tracking-[0.1em] text-[#5f5149] font-medium">
                   Kepada Yth. Bapak/Ibu/Saudara/i
                 </p>
-                <p className="font-display mt-1 text-2xl font-semibold text-[#332924]">
+                <p className="font-display mt-0.5 text-[clamp(1.2rem,5vw,1.5rem)] leading-snug font-semibold text-[#332924]">
                   {displayGuestName}
                 </p>
               </div>
@@ -241,7 +241,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={handleOpenInvitation}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#a68674] px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-md hover:bg-[#8c7060] transition-colors cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#a68674] px-6 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-white shadow-md hover:bg-[#8c7060] transition-colors cursor-pointer whitespace-nowrap"
               >
                 <MailOpen className="h-4 w-4" aria-hidden="true" />
                 <span>Buka Undangan</span>
