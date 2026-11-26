@@ -76,7 +76,7 @@ const RouteOverlay: React.FC<RouteOverlayProps> = ({ origin, destination, onRout
         const newPolylines = primaryRoute.createPolylines();
         newPolylines.forEach((polyline) => {
           polyline.setOptions({
-            strokeColor: '#3a5240',
+            strokeColor: '#8c7060',
             strokeWeight: 5,
             strokeOpacity: 0.9,
           });
@@ -124,13 +124,13 @@ const VenueMarkerWithInfo: React.FC<{ config: InvitationConfig }> = ({ config })
         onClick={() => setOpen((v) => !v)}
         title={config.venueName}
       >
-        <Pin background="#3a5240" borderColor="#232b25" glyphColor="#faf8f4" scale={1.15} />
+        <Pin background="#8c7060" borderColor="#332924" glyphColor="#fffcf8" scale={1.15} />
       </AdvancedMarker>
       {open && marker && (
         <InfoWindow anchor={marker} maxWidth={240} onCloseClick={() => setOpen(false)}>
-          <div className="text-xs leading-relaxed text-[#232b25]">
-            <p className="font-semibold text-[#3a5240]">{config.venueName}</p>
-            <p className="mt-1 text-[#525f56]">{config.venueAddress}</p>
+          <div className="text-xs leading-relaxed text-[#332924]">
+            <p className="font-semibold text-[#71584a]">{config.venueName}</p>
+            <p className="mt-1 text-[#5f5149]">{config.venueAddress}</p>
           </div>
         </InfoWindow>
       )}
@@ -199,20 +199,20 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
   };
 
   return (
-    <section id="lokasi" className="px-6 sm:px-10 py-16 sm:py-20 border-t border-[#495d4c]/14">
+    <section id="lokasi" className="px-6 sm:px-10 py-16 sm:py-20 border-t border-[#8c7060]/18">
       <div className="text-center">
         <RevealText variant="fade-down">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a6895b]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a98667]">
             Rangkaian Acara &amp; Lokasi
           </p>
         </RevealText>
         <RevealText variant="fade-up" delay={90}>
-          <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#2b332c] text-balance">
+          <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#332924] text-balance">
             Jadwal &amp; Petunjuk Arah
           </h2>
         </RevealText>
         <RevealText variant="fade-up" delay={160}>
-          <p className="mt-2 text-sm text-[#566157]">
+          <p className="mt-2 text-sm text-[#5f5149]">
             Dress Code: {config.dressCode}
           </p>
         </RevealText>
@@ -222,15 +222,15 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
       <div className="mt-9 grid grid-cols-1 sm:grid-cols-2 gap-5">
         <RevealText variant="slide-left" delay={80}>
           <article className="botanical-double-frame p-6 text-center h-full">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a6895b]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a98667]">
               Prosesi Suci
             </p>
-            <h3 className="font-display mt-1.5 text-3xl text-[#2b332c]">{config.akadTitle}</h3>
-            <div className="mt-4 space-y-1.5 text-sm text-[#566157]">
-              <p className="font-medium text-[#2b332c]">
+            <h3 className="font-display mt-1.5 text-3xl text-[#332924]">{config.akadTitle}</h3>
+            <div className="mt-4 space-y-1.5 text-sm text-[#5f5149]">
+              <p className="font-medium text-[#332924]">
                 {config.akadDateDisplay ?? config.eventDateDisplay}
               </p>
-              <p className="tabular-nums font-medium text-[#495d4c]">{config.akadTime}</p>
+              <p className="tabular-nums font-medium text-[#8c7060]">{config.akadTime}</p>
               <p className="text-xs leading-relaxed pt-1">{config.akadVenue}</p>
             </div>
           </article>
@@ -238,15 +238,15 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
 
         <RevealText variant="slide-right" delay={140}>
           <article className="botanical-double-frame p-6 text-center h-full">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a6895b]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a98667]">
               Ramah Tamah
             </p>
-            <h3 className="font-display mt-1.5 text-3xl text-[#2b332c]">{config.resepsiTitle}</h3>
-            <div className="mt-4 space-y-1.5 text-sm text-[#566157]">
-              <p className="font-medium text-[#2b332c]">
+            <h3 className="font-display mt-1.5 text-3xl text-[#332924]">{config.resepsiTitle}</h3>
+            <div className="mt-4 space-y-1.5 text-sm text-[#5f5149]">
+              <p className="font-medium text-[#332924]">
                 {config.resepsiDateDisplay ?? config.eventDateDisplay}
               </p>
-              <p className="tabular-nums font-medium text-[#495d4c]">{config.resepsiTime}</p>
+              <p className="tabular-nums font-medium text-[#8c7060]">{config.resepsiTime}</p>
               <p className="text-xs leading-relaxed pt-1">{config.resepsiVenue}</p>
             </div>
           </article>
@@ -256,7 +256,7 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
       {/* Integrated Google Maps Card */}
       <RevealText variant="fade-up" delay={120}>
         <div className="mt-7 botanical-card overflow-hidden">
-        <div className="relative h-[320px] sm:h-[360px] w-full bg-[#ece6da]">
+        <div className="relative h-[320px] sm:h-[360px] w-full bg-[#ebe3d8]">
           {hasMapsKey && !quotaExceeded ? (
             <APIProvider apiKey={apiKey!} libraries={['marker', 'routes']} language="id" region="ID">
               <GoogleMap
@@ -284,12 +284,12 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
             </APIProvider>
           ) : (
             <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#495d4c]/20 bg-white text-[#495d4c]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#8c7060]/25 bg-[#fffcf8] text-[#8c7060]">
                 <MapPin className="h-5 w-5" aria-hidden="true" />
               </div>
-              <p className="font-display mt-3 text-2xl text-[#2b332c]">{config.venueName}</p>
-              <p className="mt-1 max-w-sm text-xs text-[#566157]">{config.venueAddress}</p>
-              <p className="mt-2 text-[11px] text-[#7c877d]">
+              <p className="font-display mt-3 text-2xl text-[#332924]">{config.venueName}</p>
+              <p className="mt-1 max-w-sm text-xs text-[#5f5149]">{config.venueAddress}</p>
+              <p className="mt-2 text-[11px] text-[#84756c]">
                 {quotaExceeded
                   ? 'Tampilan peta langsung sedang membatasi kuota. Gunakan tombol Petunjuk Arah di bawah.'
                   : 'Tambahkan VITE_GOOGLE_MAPS_API_KEY di pengaturan hosting atau klik tombol Petunjuk Arah.'}
@@ -300,19 +300,19 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
 
         <div className="p-6 sm:p-7">
           <div className="flex items-start gap-3">
-            <MapPin className="h-5 w-5 text-[#495d4c] shrink-0 mt-1" aria-hidden="true" />
+            <MapPin className="h-5 w-5 text-[#8c7060] shrink-0 mt-1" aria-hidden="true" />
             <div>
-              <h3 className="font-display text-2xl text-[#2b332c]">{config.venueName}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-[#566157]">{config.venueAddress}</p>
-              <p className="mt-1 text-xs text-[#7c877d] tabular-nums">
+              <h3 className="font-display text-2xl text-[#332924]">{config.venueName}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-[#5f5149]">{config.venueAddress}</p>
+              <p className="mt-1 text-xs text-[#84756c] tabular-nums">
                 Koordinat: {config.venueLat.toFixed(5)}, {config.venueLng.toFixed(5)}
               </p>
             </div>
           </div>
 
           {hasMapsKey && !quotaExceeded && (
-            <form onSubmit={handleComputeFromInput} className="mt-5 space-y-2.5 border-t border-[#495d4c]/12 pt-5">
-              <label htmlFor="route-origin" className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#566157]">
+            <form onSubmit={handleComputeFromInput} className="mt-5 space-y-2.5 border-t border-[#8c7060]/15 pt-5">
+              <label htmlFor="route-origin" className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-[#5f5149]">
                 Cek Rute Perjalanan
               </label>
               <div className="flex gap-2">
@@ -321,12 +321,12 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
                   type="text"
                   value={originInput}
                   onChange={(e) => setOriginInput(e.target.value)}
-                  placeholder="Asal keberangkatan (mis. Stasiun Gambir)"
-                  className="w-full rounded-lg border border-[#495d4c]/20 bg-[#f8f5ee] px-3.5 py-2 text-sm text-[#2b332c] placeholder:text-[#7c877d] focus:border-[#495d4c] focus:outline-none"
+                  placeholder="Asal keberangkatan (mis. Stasiun Slawi)"
+                  className="w-full rounded-lg border border-[#8c7060]/25 bg-[#faf6f0] px-3.5 py-2 text-sm text-[#332924] placeholder:text-[#84756c] focus:border-[#8c7060] focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="rounded-lg bg-[#495d4c] px-4 py-2 text-xs font-medium text-white hover:bg-[#364739] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                  className="rounded-lg bg-[#8c7060] px-4 py-2 text-xs font-medium text-white hover:bg-[#71584a] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
                 >
                   Cek Rute
                 </button>
@@ -335,14 +335,14 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
                 type="button"
                 onClick={handleUseCurrentLocation}
                 disabled={locating}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#495d4c] hover:underline cursor-pointer disabled:opacity-60"
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-[#71584a] hover:underline cursor-pointer disabled:opacity-60"
               >
                 <Compass className="h-3.5 w-3.5" aria-hidden="true" />
                 <span>{locating ? 'Mendeteksi lokasi GPS...' : 'Gunakan Lokasi Saya Saat Ini'}</span>
               </button>
 
               {routeSummary && (
-                <div className="rounded-lg bg-[#f3efe6] px-4 py-2.5 text-xs text-[#2b332c] tabular-nums">
+                <div className="rounded-lg bg-[#f2ebe2] px-4 py-2.5 text-xs text-[#332924] tabular-nums">
                   Estimasi berkendara: <span className="font-semibold">{routeSummary.distanceKm} km</span> ·{' '}
                   <span className="font-semibold">{routeSummary.durationMins} menit</span>
                 </div>
@@ -351,12 +351,12 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
             </form>
           )}
 
-          <div className="mt-5 pt-5 border-t border-[#495d4c]/12 flex flex-wrap gap-3">
+          <div className="mt-5 pt-5 border-t border-[#8c7060]/15 flex flex-wrap gap-3">
             <a
               href={googleMapsDirUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-[#495d4c] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#364739] transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#8c7060] px-5 py-2.5 text-sm font-medium text-white hover:bg-[#71584a] transition-colors whitespace-nowrap shrink-0"
             >
               <Navigation className="h-4 w-4" aria-hidden="true" />
               <span>Buka Google Maps</span>
@@ -365,11 +365,11 @@ export const VenueMapSection: React.FC<VenueMapSectionProps> = ({ config, quotaE
             <button
               type="button"
               onClick={handleCopyAddress}
-              className="inline-flex items-center gap-2 rounded-lg border border-[#495d4c]/25 bg-white px-4 py-2.5 text-sm font-medium text-[#495d4c] hover:bg-[#f3efe6] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-2 rounded-lg border border-[#8c7060]/30 bg-[#fffcf8] px-4 py-2.5 text-sm font-medium text-[#71584a] hover:bg-[#f2ebe2] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
               {copiedAddress ? (
                 <>
-                  <Check className="h-4 w-4 text-[#495d4c]" aria-hidden="true" />
+                  <Check className="h-4 w-4 text-[#8c7060]" aria-hidden="true" />
                   <span>Alamat Tersalin</span>
                 </>
               ) : (

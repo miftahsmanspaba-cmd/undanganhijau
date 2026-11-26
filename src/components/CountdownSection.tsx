@@ -101,17 +101,17 @@ export const CountdownSection: React.FC<CountdownSectionProps> = ({ config }) =>
   return (
     <div className="text-center">
       <RevealText variant="fade-down">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a6895b]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a98667]">
           Save The Date
         </p>
       </RevealText>
       <RevealText variant="fade-up" delay={90}>
-        <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#2b332c] text-balance">
+        <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#332924] text-balance">
           {timeLeft.isPast ? 'Hari Bahagia Telah Tiba' : 'Menuju Hari Bahagia'}
         </h2>
       </RevealText>
       <RevealText variant="fade-up" delay={160}>
-        <p className="mt-2 text-sm text-[#566157]">
+        <p className="mt-2 text-sm text-[#5f5149]">
           {config.eventDateDisplay} · {config.venueName}
         </p>
       </RevealText>
@@ -127,10 +127,10 @@ export const CountdownSection: React.FC<CountdownSectionProps> = ({ config }) =>
               key={block.label}
               className="botanical-double-frame px-2 py-4 sm:py-5 flex flex-col items-center justify-center"
             >
-              <span className="font-display tabular-nums text-3xl sm:text-4xl font-semibold text-[#495d4c] leading-none">
+              <span className="font-display tabular-nums text-3xl sm:text-4xl font-semibold text-[#8c7060] leading-none">
                 {block.value}
               </span>
-              <span className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.14em] text-[#7c877d]">
+              <span className="mt-2 text-[10px] sm:text-xs uppercase tracking-[0.14em] text-[#84756c]">
                 {block.label}
               </span>
             </div>
@@ -144,7 +144,7 @@ export const CountdownSection: React.FC<CountdownSectionProps> = ({ config }) =>
             href={googleCalendarUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-[#495d4c] px-4 py-2.5 text-xs sm:text-sm font-medium text-white hover:bg-[#364739] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#495d4c]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#8c7060] px-4 py-2.5 text-xs sm:text-sm font-medium text-white hover:bg-[#71584a] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8c7060]"
           >
             <CalendarPlus className="h-4 w-4" aria-hidden="true" />
             <span>Simpan di Google Calendar</span>
@@ -152,7 +152,7 @@ export const CountdownSection: React.FC<CountdownSectionProps> = ({ config }) =>
           <button
             type="button"
             onClick={handleDownloadIcs}
-            className="inline-flex items-center gap-2 rounded-lg border border-[#495d4c]/25 bg-white px-4 py-2.5 text-xs sm:text-sm font-medium text-[#495d4c] hover:bg-[#f3efe6] transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#495d4c]"
+            className="inline-flex items-center gap-2 rounded-lg border border-[#8c7060]/30 bg-[#fffcf8] px-4 py-2.5 text-xs sm:text-sm font-medium text-[#71584a] hover:bg-[#f2ebe2] transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8c7060]"
           >
             <span>Unduh Pengingat (.ics)</span>
           </button>

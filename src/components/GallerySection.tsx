@@ -29,20 +29,20 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ photos }) => {
   const activePhoto = activeIndex !== null ? photos[activeIndex] : null;
 
   return (
-    <section id="galeri" className="px-6 sm:px-10 py-16 sm:py-20 border-t border-[#495d4c]/14">
+    <section id="galeri" className="px-6 sm:px-10 py-16 sm:py-20 border-t border-[#8c7060]/18">
       <div className="text-center">
         <RevealText variant="fade-down">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a6895b]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#a98667]">
             Galeri Foto
           </p>
         </RevealText>
         <RevealText variant="fade-up" delay={90}>
-          <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#2b332c] text-balance">
+          <h2 className="font-display mt-2.5 text-3xl sm:text-4xl text-[#332924] text-balance">
             Momen Kebersamaan Kami
           </h2>
         </RevealText>
         <RevealText variant="fade-up" delay={160}>
-          <p className="mt-2.5 text-sm text-[#566157]">
+          <p className="mt-2.5 text-sm text-[#5f5149]">
             Ketuk setiap potret untuk melihat dalam tampilan layar penuh.
           </p>
         </RevealText>
@@ -66,12 +66,12 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ photos }) => {
               <button
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`gallery-tile group relative w-full overflow-hidden rounded-xl border border-[#a6895b]/35 bg-[#ece6da] text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#495d4c] ${aspectClass}`}
+                className={`gallery-tile group relative w-full overflow-hidden rounded-xl border border-[#a98667]/40 bg-[#ebe3d8] text-left cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8c7060] ${aspectClass}`}
               >
                 {isBroken ? (
-                  <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#f3efe6] to-[#e7e1d3] p-5 text-center">
-                    <Flower2 className="h-7 w-7 text-[#495d4c]/50" aria-hidden="true" />
-                    <p className="font-display mt-2 text-base text-[#2b332c]">{photo.caption}</p>
+                  <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-[#f2ebe2] to-[#e6dcd0] p-5 text-center">
+                    <Flower2 className="h-7 w-7 text-[#8c7060]/55" aria-hidden="true" />
+                    <p className="font-display mt-2 text-base text-[#332924]">{photo.caption}</p>
                   </div>
                 ) : (
                   <img
@@ -116,7 +116,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({ photos }) => {
               <X className="h-5 w-5" />
             </button>
 
-            <div className="relative w-full overflow-hidden rounded-2xl bg-[#161b17]">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-[#1f1916]">
               <img
                 src={activePhoto.src}
                 alt={activePhoto.alt}

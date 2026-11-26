@@ -1,16 +1,20 @@
-# Vintage Botanica — Undangan Pernikahan Digital
+# Vintage Botanica — Undangan Pernikahan Bismi & Rendi
 
-Undangan pernikahan digital bertema **Vintage Botanica** yang responsif, ringan, dan siap diunggah ke GitHub serta di-deploy secara instan ke **Vercel** atau **Netlify**.
+Undangan pernikahan digital bertema **Vintage Botanica** yang responsif, ringan, dan siap di-deploy ke **GitHub Pages**, **Vercel**, atau **Netlify**.
 
-## Fitur Utama
+## Cara Membuka / Deploy di GitHub Pages (Agar Tidak Blank)
 
-- **Personalisasi Nama Tamu (`?to=Nama+Tamu`)**: Otomatis menampilkan nama tamu di sampul undangan dan mengisi formulir buku tamu.
-- **Musik Latar Otomatis**: Dilengkapi synthesizer harpa/piano akustik bawaan (Web Audio API) yang langsung berputar saat tombol *Buka Undangan* ditekan, serta mendukung URL file MP3 kustom.
-- **Hitung Mundur Acara & Kalender**: Hitung mundur waktu nyata (Hari, Jam, Menit, Detik) dengan tombol *Simpan di Google Calendar* dan unduhan pengingat `.ics`.
-- **Navigasi Lokasi Terintegrasi Google Maps**: Peta interaktif `@vis.gl/react-google-maps` dengan pin lokasi, perhitungan rute dari lokasi asal/GPS via Routes API, serta tautan langsung ke aplikasi Google Maps.
-- **Galeri Foto Elegan**: Grid foto editorial dengan Lightbox layar penuh dan navigasi keyboard.
-- **Buku Tamu Digital Interaktif**: Formulir RSVP (Hadir, Masih Ragu, Berhalangan) beserta ucapan & doa dengan filter kategori.
-- **Halaman Ucapan Terima Kasih & Pengelola Acara**: Kartu ucapan terima kasih yang siap cetak, rekening tanda kasih salin-cepat, generator tautan `?to=`, serta ekspor `index.html` mandiri tanpa library berat.
+File `index.html` utama di folder root adalah entry sumber Vite (`/src/main.tsx`) yang harus di-build terlebih dahulu. Tersedia tiga cara agar undangan tampil sempurna di GitHub Pages:
+
+1. **Otomatis lewat GitHub Actions (Disarankan)**
+   - Push seluruh project ke GitHub (`main` atau `master`).
+   - Buka **Settings → Pages → Source**, pilih **GitHub Actions**.
+   - Workflow `.github/workflows/deploy.yml` akan otomatis menjalankan `npm run build` dan menerbitkan folder `dist`.
+2. **Langsung dari Branch (`docs/` folder)**
+   - Jalankan `npm run build` (otomatis mengisi folder `docs/` dengan path relatif `./assets/...`).
+   - Push ke GitHub, lalu buka **Settings → Pages → Deploy from a branch**, pilih branch `main` dan folder **`/docs`** (bukan `/ (root)`).
+3. **Upload Hasil Build Manual**
+   - Jalankan `npm run build`, lalu unggah seluruh isi folder `dist/` (atau `docs/`) ke repository GitHub Pages Anda.
 
 ## Deployment Cepat (Vercel / Netlify)
 
