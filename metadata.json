@@ -1,0 +1,6 @@
+{
+  "name": "Vintage Botanica — Undangan Pernikahan",
+  "description": "Undangan pernikahan digital bertema Vintage Botanica dengan personalisasi tamu, musik latar otomatis, galeri foto elegan, hitung mundur acara, peta navigasi Google Maps, buku tamu interaktif, dan halaman ucapan terima kasih.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
