@@ -16,37 +16,58 @@
   <body>
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
+    <!-- GH_ROOT_FALLBACK_START -->
     <script>
       (function () {
         var devScript = document.querySelector('script[src*="src/main.tsx"]');
         if (!devScript) return;
-        var handled = false;
-        function handleUnbuiltStaticHost() {
-          if (handled || window.__BOTANICA_MOUNTED__) return;
+        var checked = false;
+        function checkStaticFallback() {
+          if (checked || window.__BOTANICA_MOUNTED__) return;
           var root = document.getElementById('root');
           if (root && root.childElementCount > 0) return;
-          if (/\/docs(\/|$)/.test(window.location.pathname)) return;
-          handled = true;
-          var base = window.location.pathname.replace(/index\.html$/, '');
-          if (!base.endsWith('/')) base += '/';
-          var target = base + 'docs/' + window.location.search + window.location.hash;
-          fetch(base + 'docs/index.html', { method: 'HEAD' })
+          checked = true;
+          fetch('./src/main.tsx')
             .then(function (res) {
-              if (res.ok) {
-                window.location.replace(target);
-              } else if (root) {
-                root.innerHTML =
-                  '<div style="font-family:sans-serif;max-width:480px;margin:48px auto;padding:24px;text-align:center;color:#332924"><h2>Undangan Perlu Di-build</h2><p>Aktifkan GitHub Pages lewat <b>GitHub Actions</b> atau pilih folder <b>/docs</b> pada pengaturan Pages repository Anda.</p></div>';
+              var ct = (res.headers.get('content-type') || '').toLowerCase();
+              if (ct.indexOf('javascript') !== -1) {
+                return;
               }
+              var base = window.location.pathname.replace(/index\.html$/, '');
+              if (!base.endsWith('/')) base += '/';
+              var candidates = ['public/undangan/', 'docs/'];
+              function tryNext(idx) {
+                if (idx >= candidates.length) {
+                  if (root) {
+                    root.innerHTML =
+                      '<div style="font-family:sans-serif;max-width:480px;margin:48px auto;padding:24px;text-align:center;color:#332924"><h2>Undangan Perlu Di-build</h2><p>Pastikan folder <b>public/undangan</b> atau <b>docs</b> ikut terunggah ke repository GitHub Anda.</p></div>';
+                  }
+                  return;
+                }
+                var sub = candidates[idx];
+                fetch(base + sub + 'index.html', { method: 'HEAD' })
+                  .then(function (r) {
+                    if (r.ok) {
+                      window.location.replace(
+                        base + sub + window.location.search + window.location.hash
+                      );
+                    } else {
+                      tryNext(idx + 1);
+                    }
+                  })
+                  .catch(function () {
+                    tryNext(idx + 1);
+                  });
+              }
+              tryNext(0);
             })
-            .catch(function () {
-              window.location.replace(target);
-            });
+            .catch(function () {});
         }
-        devScript.addEventListener('error', handleUnbuiltStaticHost);
-        window.setTimeout(handleUnbuiltStaticHost, 600);
+        devScript.addEventListener('error', checkStaticFallback);
+        window.setTimeout(checkStaticFallback, 400);
       })();
     </script>
+    <!-- GH_ROOT_FALLBACK_END -->
   </body>
 </html>
 

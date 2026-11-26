@@ -10,11 +10,23 @@ export default defineConfig(() => {
     plugins: [
       react(),
       tailwindcss(),
-      // Copies src/assets into dist/ and mirrors dist/ into docs/ so GitHub Pages
-      // (both GitHub Actions and /docs branch deployment) works without blank screens.
+      // Copies src/assets into dist/ and mirrors clean dist/ into public/undangan & docs/
+      // so GitHub Pages works whether served from GitHub Actions, /docs, or / (root).
       {
         name: 'copy-unbundled-src-assets',
         apply: 'build',
+        buildStart(): void {
+          const publicBuiltDir = path.resolve(__dirname, 'public/undangan');
+          if (fs.existsSync(publicBuiltDir)) {
+            fs.rmSync(publicBuiltDir, {recursive: true, force: true});
+          }
+        },
+        transformIndexHtml(html: string): string {
+          return html.replace(
+            /\s*<!-- GH_ROOT_FALLBACK_START -->[\s\S]*?<!-- GH_ROOT_FALLBACK_END -->/g,
+            '',
+          );
+        },
         closeBundle(error?: Error): void {
           if (error) {
             return;
@@ -26,9 +38,12 @@ export default defineConfig(() => {
             fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
           }
           const docsDir = path.resolve(__dirname, 'docs');
+          const publicBuiltDir = path.resolve(__dirname, 'public/undangan');
           if (fs.existsSync(distDir)) {
             fs.rmSync(docsDir, {recursive: true, force: true});
             fs.cpSync(distDir, docsDir, {recursive: true, force: true});
+            fs.rmSync(publicBuiltDir, {recursive: true, force: true});
+            fs.cpSync(distDir, publicBuiltDir, {recursive: true, force: true});
           }
         },
       },
