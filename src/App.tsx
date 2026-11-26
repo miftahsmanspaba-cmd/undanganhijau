@@ -73,7 +73,10 @@ export default function App() {
   const [entries, setEntries] = useState<GuestbookEntry[]>(() => {
     try {
       const saved = localStorage.getItem(WISHES_STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) return parsed;
+      }
     } catch {
       // ignore storage errors
     }

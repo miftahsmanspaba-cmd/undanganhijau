@@ -16,6 +16,37 @@
   <body>
     <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
+    <script>
+      (function () {
+        var devScript = document.querySelector('script[src*="src/main.tsx"]');
+        if (!devScript) return;
+        var handled = false;
+        function handleUnbuiltStaticHost() {
+          if (handled || window.__BOTANICA_MOUNTED__) return;
+          var root = document.getElementById('root');
+          if (root && root.childElementCount > 0) return;
+          if (/\/docs(\/|$)/.test(window.location.pathname)) return;
+          handled = true;
+          var base = window.location.pathname.replace(/index\.html$/, '');
+          if (!base.endsWith('/')) base += '/';
+          var target = base + 'docs/' + window.location.search + window.location.hash;
+          fetch(base + 'docs/index.html', { method: 'HEAD' })
+            .then(function (res) {
+              if (res.ok) {
+                window.location.replace(target);
+              } else if (root) {
+                root.innerHTML =
+                  '<div style="font-family:sans-serif;max-width:480px;margin:48px auto;padding:24px;text-align:center;color:#332924"><h2>Undangan Perlu Di-build</h2><p>Aktifkan GitHub Pages lewat <b>GitHub Actions</b> atau pilih folder <b>/docs</b> pada pengaturan Pages repository Anda.</p></div>';
+              }
+            })
+            .catch(function () {
+              window.location.replace(target);
+            });
+        }
+        devScript.addEventListener('error', handleUnbuiltStaticHost);
+        window.setTimeout(handleUnbuiltStaticHost, 600);
+      })();
+    </script>
   </body>
 </html>
 

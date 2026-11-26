@@ -22,3 +22,5 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>
 );
+
+(window as unknown as { __BOTANICA_MOUNTED__?: boolean }).__BOTANICA_MOUNTED__ = true;
